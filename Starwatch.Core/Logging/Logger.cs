@@ -36,17 +36,20 @@ namespace Starwatch.Logging
         /// <summary>
         /// The type of log.
         /// </summary>
-        public enum LogType {
+        public enum LogType 
+        {
             /// <summary>
-            /// A information log
+            /// An information log
             /// </summary>
             Info = 0,
+
             /// <summary>
             /// A warning log
             /// </summary>
             Warning = 1,
+
             /// <summary>
-            /// A error log
+            /// An error log
             /// </summary>
             Error = 2
         }
@@ -84,7 +87,7 @@ namespace Starwatch.Logging
         }
 
         /// <summary>
-        /// The current mode the logger is in. If the logger has a <see cref="Parent"/>, then the parents mode will be used instead.
+        /// The current mode the logger is in. If the logger has a <see cref="Parent"/>, then the parent's mode will be used instead.
         /// </summary>
         public enum LogMode {
             /// <summary>
@@ -159,7 +162,6 @@ namespace Starwatch.Logging
         /// Creates a new instance of a logger.
         /// </summary>
         /// <param name="tag">The identifier the logger will be known as</param>
-        /// <param name="name">The actual name for the logger</param>
         /// <param name="parent">The parent of the logger. It is recommened to always follow the parent structure.</param>
         public Logger(string tag, Logger parent = null) : base()
         {
@@ -211,7 +213,7 @@ namespace Starwatch.Logging
 		/// </summary>
 		/// <param name="exception">The exception</param>
 		/// <param name="format">Formatting of the exception message</param>
-		public void LogError(Exception exception, string format = "Exception Occured: {0}")
+		public void LogError(Exception exception, string format = "Exception Occurred: {0}")
 		{
 			//Log the message of the exception
 			LogError(format, "(" + exception.GetType().Name + ") " + exception.Message);
@@ -267,7 +269,7 @@ namespace Starwatch.Logging
 
             if (Parent != null)
             {
-                //The parent isn't null, so we should past this up to the parent
+                //The parent isn't null, so we should pass this up to the parent
                 Parent.LogParent(msg, false, type);
             }
             else
@@ -342,7 +344,7 @@ namespace Starwatch.Logging
 
             if (e is AggregateException)
             {
-                Console.WriteLine("LOGGER EXCEPTION: An exception occured while trying to invoke a log list. AGGREGATE!");
+                Console.WriteLine("LOGGER EXCEPTION: An exception occurred while trying to invoke a log list. AGGREGATE!");
    
                 AggregateException aggregate = (AggregateException)e;
                 aggregate.Handle((x) =>
@@ -355,7 +357,7 @@ namespace Starwatch.Logging
             }
             else
             {
-                Console.WriteLine("LOGGER EXCEPTION: An exception occured while trying to invoke a log list. ({1}) {0}", e.Message, key);
+                Console.WriteLine("LOGGER EXCEPTION: An exception occurred while trying to invoke a log list. ({1}) {0}", e.Message, key);
                 Console.WriteLine(e.StackTrace);
             }
 
