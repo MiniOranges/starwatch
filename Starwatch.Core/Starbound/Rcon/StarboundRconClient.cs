@@ -185,7 +185,7 @@ namespace Starwatch.Starbound.Rcon
         }
 
         /// <summary>
-        /// Executes a RCON command and listens for its response. Will fail safely with a invalid rcon response being returned if any errors occured.
+        /// Executes a RCON command and listens for its response. Will fail safely with a invalid rcon response being returned if any errors occurred.
         /// <para>NOTE: Its recommended to always use the implementation over manually calling rcon. For example, call <see cref="ListAsync"/> to get a list of players.</para>
         /// </summary>
         /// <param name="command">The rcon command to execute</param>
