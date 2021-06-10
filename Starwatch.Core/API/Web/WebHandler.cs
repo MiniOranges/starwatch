@@ -30,10 +30,8 @@ namespace Starwatch.API.Web
         public enum SearchMode { None, HTML, AnyFile }
         public SearchMode MissingExtensionMode { get; set; } = SearchMode.HTML;
         public string ContentRoot { get; set; }
-        public WebHandler(ApiHandler apiHandler)
-        {
 
-        }
+        public WebHandler(ApiHandler apiHandler) { }
 
         public bool HandleRequest(RequestMethod method, HttpRequestEventArgs args, Authentication auth)
         {
@@ -49,7 +47,7 @@ namespace Starwatch.API.Web
             string resource = args.Request.Url.AbsolutePath.TrimStart('/');
             if (string.IsNullOrWhiteSpace(resource)) resource = "index.html";
 
-            //Makesure directory exists (for debugging)
+            //Make sure directory exists (for debugging)
             if (!Directory.Exists(ContentRoot))
                 Directory.CreateDirectory(ContentRoot);
 
@@ -57,18 +55,18 @@ namespace Starwatch.API.Web
             string path = Path.Combine(ContentRoot, resource);
             auth.RecordAction($"web:{path}");
 
-            //Make sure it has a extension
+            //Make sure it has an extension
             string ext = Path.GetExtension(path);
             if (!string.IsNullOrEmpty(ext))
             {
-                //The file has a extension, so just return it normally
+                //The file has an extension, so just return it normally
                 //Return the file
                 args.Response.WriteFile(path);
                 return true;
             }
             else
             {
-                //If we end with a forward slash its straight up directory
+                //If we end with a forward slash it is straight up a directory
                 if (resource.EndsWith("/")) return false;
 
                 switch(MissingExtensionMode)
