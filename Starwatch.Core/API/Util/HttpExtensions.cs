@@ -99,7 +99,7 @@ namespace Starwatch.API.Util
                 return;
             }
 
-            //Get exetension
+            //Get extension
             var ext = Path.GetExtension(path);
             response.ContentType = ContentType.FromFileExtension(ext);
 
@@ -120,11 +120,11 @@ namespace Starwatch.API.Util
             if (!File.Exists(path))
             {
                 response.StatusCode = (int)HttpStatusCode.NotFound;
-                response.WriteText($"The file '{path}' could not be found. Are you sure this is the correct url?");
+                response.WriteText($"The file '{path}' could not be found. Are you sure this is the correct URL?");
                 return;
             }
 
-            //Get exetension
+            //Get extension
             var ext = Path.GetExtension(path);
             response.ContentType = ContentType.FromFileExtension(ext);
             
@@ -133,17 +133,17 @@ namespace Starwatch.API.Util
                 response.WriteStream(stream);
         }
 
-        [System.Obsolete("Chunking is only effective if asyncronous")]
+        [System.Obsolete("Chunking is only effective if asynchronous")]
         public static void WriteFileChunked(this HttpListenerResponse response, string path)
         {
             if (!File.Exists(path))
             {
                 response.StatusCode = (int)HttpStatusCode.NotFound;
-                response.WriteText($"The file '{path}' could not be found. Are you sure this is the correct url?");
+                response.WriteText($"The file '{path}' could not be found. Are you sure this is the correct URL?");
                 return;
             }
 
-            //Get exetension
+            //Get extension
             var ext = Path.GetExtension(path);
             response.ContentType = ContentType.FromFileExtension(ext);
             response.ContentEncoding = Encoding.UTF8;
