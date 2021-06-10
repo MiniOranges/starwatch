@@ -27,6 +27,8 @@ using System.Threading.Tasks;
 
 namespace Starwatch.Entities
 {
+    //Examples of Celestial Coordinates:
+
     //ClientShipWorld:bdcb81d986d009e4915d42f3b9e55f20
     //CelestialWorld:17:17:-198600707:10
     //CelestialWorld:-55603946:357637721:-294801013:10=4934.94.1173.41
@@ -118,14 +120,14 @@ namespace Starwatch.Entities
             if (!isInstance && subs.Length == 4)
                 subs[0] = "SystemWorld";
 
-            //return the correct object
+            //Return the correct object
             if (isInstance) return new InstanceWorld(subs);
             if (subs.Length == 4) return new SystemWorld(subs);
             return new CelestialWorld(subs);
         }
 
         /// <summary>
-        /// Parses the identifier too a World. The identifier can be either the result from a whereami or a filename ending with .world. Returns null if the pattern is not valid.
+        /// Parses the identifier of a World. The identifier can be either the result from a whereami or a filename ending with .world. Returns <see langword="null"/> if the pattern is not valid.
         /// </summary>
         /// <param name="identifier">The string identifier of the world, either the result of /whereami or the filename ending with .world</param>
         /// <returns></returns>
@@ -228,10 +230,12 @@ namespace Starwatch.Entities
         /// The X coordinate
         /// </summary>
         public long X { get; set; }
+
         /// <summary>
         /// The Y coordinate
         /// </summary>
         public long Y { get; set; }
+
         /// <summary>
         /// The Z coordinate
         /// </summary>
@@ -289,6 +293,7 @@ namespace Starwatch.Entities
         /// <param name="subs"></param>
         internal ClientShipWorld(string[] subs)
         {
+            //Example Celestial Coordinate:
             //ClientShipWorld:bdcb81d986d009e4915d42f3b9e55f20
             if (subs.Length != 2) throw new ArgumentOutOfRangeException("subs", subs.Length, "ClientShipWorld subs constructor requires exactly 2 elements");
             if (subs[0] != "ClientShipWorld") throw new ArgumentException("The first element of the subs must be equal to ClientShipWorld");
@@ -304,12 +309,12 @@ namespace Starwatch.Entities
     public class InstanceWorld : World
     {
         /// <summary>
-        /// The type of the instance world
+        /// The type of the instance world.
         /// </summary>
         public string Type { get; set; }
         
         /// <summary>
-        /// The unique id of the instance world
+        /// The unique id of the instance world.
         /// </summary>
         public string UID { get; set; }
 
@@ -329,6 +334,7 @@ namespace Starwatch.Entities
         /// <param name="subs"></param>
         internal InstanceWorld(string[] subs)
         {
+            //Example InstanceWorld Celestial Coordinates:
             //InstanceWorld:outpost:-:-=outpost
             //InstanceWorld:museum:-:-=128.873
             //InstanceWorld:outpost:-:-
@@ -395,6 +401,7 @@ namespace Starwatch.Entities
         /// <param name="subs"></param>
         internal CelestialWorld(string[] subs)
         {
+            //Example CelestialWorld Celestial Coordinates
             //CelestialWorld:17:17:-198600707:10
             //CelestialWorld:-55603946:357637721:-294801013:10=4934.94.1173.41
             if (subs.Length < 5) throw new ArgumentOutOfRangeException("subs", subs.Length, "CelestialWorld subs constructor requires at least 5 elements");
