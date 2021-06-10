@@ -94,7 +94,7 @@ namespace Starwatch.API.Gateway
         }
 
         /// <summary>
-        /// Validates and sets the current authentication, closing the connection if its invalid with PolicyViolation.
+        /// Validates and sets the current authentication, closing the connection if it is invalid with PolicyViolation.
         /// </summary>
         /// <returns></returns>
         protected bool ValidateAuthentication()
@@ -126,10 +126,10 @@ namespace Starwatch.API.Gateway
         protected override void OnError(WebSocketSharp.ErrorEventArgs e)
         {
             if (!string.IsNullOrEmpty(e.Message))
-                Logger.Log("An error has occured within the websocket of connection {0}: {1}", this, e.Message);
+                Logger.Log("An error has occurred within the websocket of connection {0}: {1}", this, e.Message);
 
             if (e.Exception != null)
-                Logger.Log("An exception has occured within the websocket of connection {0}: {1}", this, e.Exception.Message);
+                Logger.Log("An exception has occurred within the websocket of connection {0}: {1}", this, e.Exception.Message);
 
             //Error means closed connection
             Terminate(CloseStatusCode.ServerError, e.Message);
