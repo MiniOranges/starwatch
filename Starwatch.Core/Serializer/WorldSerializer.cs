@@ -35,7 +35,7 @@ namespace Starwatch.Serializer
                 return;
             }
 
-            //WRite the value
+            //Write the value
             writer.WriteValue(world.Whereami);
         }
 
