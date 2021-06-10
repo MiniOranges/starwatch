@@ -60,9 +60,9 @@ namespace Starwatch.API.Web
 
 
         /// <summary>
-        /// Trys to get a int
+        /// Trys to get an int
         /// </summary>
-        /// <param name="key">key of the query</param>
+        /// <param name="key">Key of the query</param>
         /// <param name="result">Resulting value</param>
         /// <returns></returns>
         public bool TryGetInt(string key, out int result)
@@ -75,7 +75,7 @@ namespace Starwatch.API.Web
         /// <summary>
         /// Trys to get a bool
         /// </summary>
-        /// <param name="key">key of the query</param>
+        /// <param name="key">Key of the query</param>
         /// <param name="result">Resulting value</param>
         /// <returns></returns>
         public bool TryGetBool(string key, out bool result)
@@ -89,7 +89,7 @@ namespace Starwatch.API.Web
                 return false;
             }
 
-            //If its a bool, give straight up
+            //If it is a bool, give straight up
             if (bool.TryParse(v, out result))
                 return true;
 
@@ -107,7 +107,7 @@ namespace Starwatch.API.Web
         /// <summary>
         /// Trys to get a double
         /// </summary>
-        /// <param name="key">key of the query</param>
+        /// <param name="key">Key of the query</param>
         /// <param name="result">Resulting value</param>
         /// <returns></returns>
         public bool TryGetDouble(string key, out double result)
@@ -120,7 +120,7 @@ namespace Starwatch.API.Web
         /// <summary>
         /// Trys to get a long
         /// </summary>
-        /// <param name="key">key of the query</param>
+        /// <param name="key">Key of the query</param>
         /// <param name="result">Resulting value</param>
         /// <returns></returns>
         public bool TryGetLong(string key, out long result)
@@ -134,7 +134,7 @@ namespace Starwatch.API.Web
         /// <summary>
         /// Tries to get a string
         /// </summary>
-        /// <param name="key">key of the query</param>
+        /// <param name="key">Key of the query</param>
         /// <param name="result">Resulting value</param>
         /// <returns></returns>
         public bool TryGetString(string key, out string result)
@@ -143,9 +143,9 @@ namespace Starwatch.API.Web
         }
 
         /// <summary>
-        /// Gets the boolean, returning default if it doesnt not exist.
+        /// Gets the boolean, returning default if it doesn't exist.
         /// </summary>
-        /// <param name="key"></param>
+        /// <param name="key">Key of the query</param>
         /// <param name="default"></param>
         /// <returns></returns>
         public bool GetBool(string key, bool @default)
@@ -156,9 +156,9 @@ namespace Starwatch.API.Web
         }
 
         /// <summary>
-        /// Gets the int, returning default if it doesnt not exist.
+        /// Gets the int, returning default if it doesn't exist.
         /// </summary>
-        /// <param name="key"></param>
+        /// <param name="key">Key of the query</param>
         /// <param name="default"></param>
         /// <returns></returns>
         public int GetInt(string key, int @default)
@@ -169,9 +169,9 @@ namespace Starwatch.API.Web
         }
 
         /// <summary>
-        /// Gets the double, returning default if it doesnt not exist.
+        /// Gets the double, returning default if it doesn't exist.
         /// </summary>
-        /// <param name="key"></param>
+        /// <param name="key">Key of the query</param>
         /// <param name="default"></param>
         /// <returns></returns>
         public double GetDouble(string key, double @default)
@@ -182,9 +182,9 @@ namespace Starwatch.API.Web
         }
 
         /// <summary>
-        /// Gets the long, returning default if it doesnt not exist.
+        /// Gets the long, returning default if it doesn't exist.
         /// </summary>
-        /// <param name="key"></param>
+        /// <param name="key">Key of the query</param>
         /// <param name="default"></param>
         /// <returns></returns>
         public long GetLong(string key, long @default)
@@ -195,9 +195,9 @@ namespace Starwatch.API.Web
         }
 
         /// <summary>
-        /// Gets the string, returning default if it doesnt not exist.
+        /// Gets the string, returning default if it doesn't exist.
         /// </summary>
-        /// <param name="key"></param>
+        /// <param name="key">Key of the query</param>
         /// <param name="default"></param>
         /// <returns></returns>
         public string GetString(string key, string @default)
@@ -210,9 +210,9 @@ namespace Starwatch.API.Web
 
 
         /// <summary>
-        /// Gets a optional long
+        /// Gets an optional long
         /// </summary>
-        /// <param name="key"></param>
+        /// <param name="key">Key of the query</param>
         /// <returns></returns>
         public long? GetOptionalLong(string key)
         {
@@ -231,6 +231,7 @@ namespace Starwatch.API.Web
         {
             //How can we possibly have enough keys?
             if (keys.Length > this.Count) return false;
+
             for (int i = 0; i < keys.Length; i++)
             {
                 if (i > this.Count || !this.ContainsKey(keys[i]))
@@ -241,10 +242,10 @@ namespace Starwatch.API.Web
         }
 
         /// <summary>
-        /// Validates strictly if we only have the keys passed. If we do not have all the keys, or if we have extra keys, this will return false.
+        /// Validates strictly if we only have the keys passed. If we do not have all the keys, or if we have extra keys, this will return <see langword="false"/>.
         /// </summary>
         /// <param name="keys">The keys we only want</param>
-        /// <returns>True if we only have those keys.</returns>
+        /// <returns><see langword="true"/> if we only have those keys, <see langword="false"/> otherwise.</returns>
         public bool ValidateStrict(params string[] keys)
         {
             //We are not matching in length, no way will we have the keys
@@ -253,7 +254,7 @@ namespace Starwatch.API.Web
             List<string> remain = new List<string>(keys);
             foreach (string key in this.Keys)
             {
-                //We are a key we where not expecting!
+                //We are a key we were not expecting!
                 if (!remain.Contains(key))
                     return false;
 
