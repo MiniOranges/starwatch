@@ -56,8 +56,7 @@ namespace Starwatch.API.Rest.Route
 
             var task = Task.Run(async () =>
             {
-
-                //Make sure the name isnt a duplicate
+                //Make sure the name isn't a duplicate
                 if (await Starbound.Configurator.GetAccountAsync(account.Name) != null)
                     return new RestResponse(RestStatus.BadRequest, $"The username {account.Name} already exists.");
             
