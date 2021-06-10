@@ -50,7 +50,7 @@ namespace Starwatch.API.Rest.Route
         }
 
         /// <summary>
-        /// Gets the account exists and its admin state.
+        /// Gets the account if it exists and its admin state.
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
@@ -112,7 +112,7 @@ namespace Starwatch.API.Rest.Route
             {
                 if (username != Account.Name)
                 {
-                    //Make sure the name isnt a duplicate
+                    //Make sure the name isn't a duplicate
                     if (Starbound.Configurator.GetAccountAsync(username) != null)
                         return new RestResponse(RestStatus.BadRequest, "The username " + username + " already exists.");
 
