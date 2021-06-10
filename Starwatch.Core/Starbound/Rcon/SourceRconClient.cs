@@ -41,7 +41,7 @@ namespace Starwatch.Starbound.Rcon
         }        
 
         /// <summary>
-        /// Executes a RCON command and listens for its response. Will fail safely with a invalid rcon response being returned if any errors occured.
+        /// Executes a RCON command and listens for its response. Will fail safely with a invalid rcon response being returned if any errors occurred.
         /// </summary>
         /// <param name="command">The rcon command to execute</param>
         /// <returns>Returns a rcon resposne.</returns>
@@ -124,7 +124,7 @@ namespace Starwatch.Starbound.Rcon
                 var res = new RconResponse()
                 {
                     Command = command,
-                    Message = "Exception Occured: " + e.Message,
+                    Message = "Exception Occurred: " + e.Message,
                     Success = false
                 };
 
