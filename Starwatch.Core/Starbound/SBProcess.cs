@@ -87,7 +87,7 @@ namespace Starwatch.Starbound
             p_KillProcess();
         }
 
-        /// <summary>Stops the process and asyncronously waits it to finish cleanup.</summary>
+        /// <summary>Stops the process and asynchronously waits it to finish cleanup.</summary>
         /// <returns></returns>
         public async Task StopAsync()
         {
@@ -172,7 +172,7 @@ namespace Starwatch.Starbound
             }
             catch (Exception e)
             {
-                //An exception has occured
+                //An exception has occurred
                 LogError(e);
             }
             finally
