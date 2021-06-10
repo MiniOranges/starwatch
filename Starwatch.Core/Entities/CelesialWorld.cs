@@ -66,10 +66,10 @@ namespace Starwatch.Entities
             [JsonProperty("Name")]
             public string NameTagged => Name?.TaggedContent;
 
-            public string Description { get; set; } //Tier 3 Moon etc. celestial/parameters/description
+            public string Description { get; set; }   //Tier 3 Moon etc. celestial/parameters/description
             public string TerrainSize { get; set; }   //small, medium, etc. celestial/parameters/worldSize
             public string TerrainType { get; set; }   //Terrestrial. celestial/parameters/worldType
-            public string PrimaryBiome { get; set; } //The primary biome, like savannah. world/primaryBiome
+            public string PrimaryBiome { get; set; }  //The primary biome, like savannah. world/primaryBiome
 
             //public int Planet { get; set; }         //The planet id. celestial/coordinate/planet
             //public int? Satellite { get; set; }     //This will be 0 if we are not a satellite. celestial/coordinate/satellite
