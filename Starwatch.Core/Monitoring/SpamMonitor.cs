@@ -93,7 +93,7 @@ namespace Starwatch.Monitoring
                 //Restart
                 if (RestartServer)
                 {
-                    throw new ServerShutdownException("Premptive Attack Mitigation: " + msg.Content);
+                    throw new ServerShutdownException("Preemptive Attack Mitigation: " + msg.Content);
                 }
             }
 
