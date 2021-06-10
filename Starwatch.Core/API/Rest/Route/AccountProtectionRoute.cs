@@ -40,7 +40,7 @@ namespace Starwatch.API.Rest.Route
         /// </summary>
         public override RestResponse OnGet(Query query)
         {      
-            //get the manager
+            //Get the manager
             var manager = GetWhitelistManager();
             if (manager == null) return new RestResponse(RestStatus.ResourceNotFound, msg: "Could not find the protection manager!");
 
