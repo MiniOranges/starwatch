@@ -40,7 +40,7 @@ namespace Starwatch.Monitoring
             {
                 if (msg.Content.StartsWith(FATAL_ERROR))
                 {
-                    Logger.LogError("Fatal error has occured: " + msg);
+                    Logger.LogError("Fatal error has occurred: " + msg);
 
                     //Send a API log to the error
                     Server.ApiHandler.BroadcastRoute((gateway) =>
