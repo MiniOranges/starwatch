@@ -168,7 +168,7 @@ namespace Starwatch
             }
             catch (Exception e)
             {
-                Logger.LogError(e, "Uncaught exception occured! {0}");
+                Logger.LogError(e, "Uncaught exception occurred! {0}");
             }
             finally
             {
