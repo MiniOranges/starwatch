@@ -47,7 +47,7 @@ namespace Starwatch.API.Web
 
         public bool HandleRequest(RequestMethod method, HttpRequestEventArgs args, Authentication auth)
         {
-            //This isnt a auth request
+            //This isn't an auth request
             if (args.Request.Url.Segments.Length < 2) return false;
             if (args.Request.Url.Segments[1] != ROOT_URL) return false;
 
@@ -58,7 +58,6 @@ namespace Starwatch.API.Web
                 args.Response.Close();
                 return true;
             }
-
 
             // 0    1    2
             // api/ log/ 1/
@@ -137,7 +136,7 @@ namespace Starwatch.API.Web
         }
 
         /// <summary>
-        /// Scans a file, producing a XML Table of matches, with onions.
+        /// Scans a file, producing an XML Table of matches, with onions.
         /// </summary>
         /// <param name="file"></param>
         /// <param name="pattern"></param>
