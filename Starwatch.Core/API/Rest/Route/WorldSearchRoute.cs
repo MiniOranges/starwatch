@@ -44,7 +44,7 @@ namespace Starwatch.API.Rest.Route
 
             if (query.GetBool("systems", false))
             {
-                //Group them in to systems
+                //Group them into systems
                 Dictionary<Coordinate, List<World>> grouping = new Dictionary<Coordinate, List<World>>();
                 foreach (var r in results)
                 {
