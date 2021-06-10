@@ -92,7 +92,7 @@ namespace Starwatch.API
         public bool IsUser => AuthLevel == AuthLevel.User || AuthLevel == AuthLevel.Admin || AuthLevel == AuthLevel.SuperUser;
       
         /// <summary>
-        /// Is the authentication a admin user?
+        /// Is the authentication an admin user?
         /// </summary>
         public bool IsAdmin => AuthLevel == AuthLevel.Admin || AuthLevel == AuthLevel.SuperUser;
 
@@ -115,14 +115,13 @@ namespace Starwatch.API
         /// </summary>
         public long TotalActionsPerformed { get; private set; }
 
-
         /// <summary>
         /// The last action performed by the authentication.
         /// </summary>
         public string LastAction { get; private set; }
 
         /// <summary>
-        /// The time at which the ratelimit will reset
+        /// The time at which the ratelimit will reset.
         /// </summary>
         public DateTime RateLimitResetTime => _lastRateLimitTime + TimeSpan.FromMinutes(1);
 
@@ -241,7 +240,7 @@ namespace Starwatch.API
                 if (Token.HasValue && DateTime.UtcNow < Token.Value.Expiry)
                     return new NetworkCredential(context.Name, Token.Value.AccessToken);
                 
-                //This authentication doesnt have a token so you cant login using this method.
+                //This authentication doesn't have a token so you can't login using this method.
                 return null;
             }
 
