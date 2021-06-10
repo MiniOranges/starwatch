@@ -44,7 +44,7 @@ namespace Starwatch.API.Rest.Route
         /// </summary>
         public override RestResponse OnGet(Query query)
         {
-            //get the manager
+            //Get the manager
             RestoreMonitor restorer = GetRestoreMonitor();
             if (restorer == null) return new RestResponse(RestStatus.ResourceNotFound, msg: "Could not find the restore manager!");
 
@@ -52,7 +52,7 @@ namespace Starwatch.API.Rest.Route
             var restore = restorer.GetWorldRestoreAsync(World).Result;
             if (restore == null) return new RestResponse(RestStatus.ResourceNotFound, msg: "Restore does not exist.");
 
-            //return the world
+            //Return the world
             return new RestResponse(RestStatus.OK, res: restore);
         }
 
@@ -61,7 +61,7 @@ namespace Starwatch.API.Rest.Route
         /// </summary>
         public override RestResponse OnPost(Query query, object payloadObject)
         {
-            //get the manager
+            //Get the manager
             RestoreMonitor restorer = GetRestoreMonitor();
             if (restorer == null) return new RestResponse(RestStatus.ResourceNotFound, msg: "Could not find the restore manager!");
 
@@ -77,7 +77,7 @@ namespace Starwatch.API.Rest.Route
         /// </summary>
         public override RestResponse OnDelete(Query query)
         {
-            //get the manager
+            //Get the manager
             RestoreMonitor restorer = GetRestoreMonitor();
             if (restorer == null) return new RestResponse(RestStatus.ResourceNotFound, msg: "Could not find the restore manager!");
 
@@ -94,10 +94,10 @@ namespace Starwatch.API.Rest.Route
         /// </summary>
         public override RestResponse OnPatch(Query query, object payloadObject)
         {
-            //get the patch
+            //Get the patch
             WorldRestorePatch patch = (WorldRestorePatch)payloadObject;
             
-            //get the manager
+            //Get the manager
             RestoreMonitor restorer = GetRestoreMonitor();
             if (restorer == null) return new RestResponse(RestStatus.ResourceNotFound, msg: "Could not find the restore manager!");
 
