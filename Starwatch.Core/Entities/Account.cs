@@ -30,7 +30,7 @@ namespace Starwatch.Entities
     [JsonObject(MemberSerialization = MemberSerialization.OptIn)]
     public class Account : IRecord
     {
-        public const string Annonymous = "<annonymous>";
+        public const string Anonymous = "<anonymous>";
         public string Table => "!accounts";
 
         [JsonProperty]
