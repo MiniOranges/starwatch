@@ -38,7 +38,7 @@ namespace Starwatch.Serializer
                 return;
             }
 
-            //Create a object to hold the elements
+            //Create an object to hold the elements
             JObject accountMapping = new JObject();
             foreach(var acc in manager.Accounts)
             {
@@ -102,7 +102,7 @@ namespace Starwatch.Serializer
                         }
                     }
 
-                    //add the account
+                    //Add the account
                     yield return account;
                 }
 
