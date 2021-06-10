@@ -53,18 +53,18 @@ namespace Starwatch.API.Rest.Route
                 return new RestResponse(RestStatus.BadRequest, msg: "Bans cannot have their tickets preset!");
 
             //If we have a connection ID then we will fill the rest with the connection information.
-            // otherwise we will just ban the player as usual.
+            //Otherwise we will just ban the player as usual.
             if (query.ContainsKey("cid"))
             {
                 //We are banning a specific connection id.
                 int connection = 0;
                 if (!query.TryGetInt("cid", out connection))
-                    return new RestResponse(RestStatus.BadRequest, msg: $"Cannot convert '{query["cid"]}' to a int32!");
+                    return new RestResponse(RestStatus.BadRequest, msg: $"Cannot convert '{query["cid"]}' to an int32!");
 
                 //Get the connection
                 player = Starbound.Connections.GetPlayer(connection);
 
-                //Make sure the player is upto date
+                //Make sure the player is up to date
                 if (player != null && player.UUID == null)
                 {
                     Starbound.Connections.RefreshListing().Wait();
@@ -75,12 +75,12 @@ namespace Starwatch.API.Rest.Route
             //If we have a player, update the ban information
             if (player != null)
             {
-                //Update the results (if nessary)
+                //Update the results (if necessary)
                 if (string.IsNullOrEmpty(ban.IP) || query.GetBool("copy_details", false)) ban.IP = player.IP;
                 if (string.IsNullOrEmpty(ban.UUID) || query.GetBool("copy_details", false)) ban.UUID = player.UUID;
             }
 
-            //Make sure we have a IP or UUID
+            //Make sure we have an IP or UUID
             if (ban.BanType == BanType.Invalid)
                 return new RestResponse(RestStatus.BadRequest, "Invalid ban type. IP and/or UUID must be set!");
 
@@ -95,7 +95,7 @@ namespace Starwatch.API.Rest.Route
             var task = Starbound.Ban(ban);
             ban = Starbound.Configurator.GetBanAsync(task.Result).Result;
             
-            //Kick the player if nessary, waiting for it to finish.
+            //Kick the player if necessary, waiting for it to finish.
             if (player != null)
                 Starbound.Kick(player.Connection, ban.Reason).Wait();
             
