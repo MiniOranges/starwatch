@@ -96,7 +96,7 @@ namespace Starwatch.API.Rest
                 //Prepare our stub
                 StubKey key = new StubKey(attribute);
 
-                //Doesnt yet exist, so we will create a new lsit of route factories
+                //Doesn't exist, so we will create a new list of route factories
                 if (!_routeMap.ContainsKey(key))
                     _routeMap.Add(key, new List<RouteFactory>());
 
@@ -325,11 +325,11 @@ namespace Starwatch.API.Rest
             }
             catch (Exception e)
             {
-                Logger.LogError(e, "Exception occured while processing rest: {0}");
+                Logger.LogError(e, "Exception occurred while processing rest: {0}");
                 if (ReportExceptions)
                     return new RestResponse(RestStatus.InternalError, e.Message, e.StackTrace);
 
-                return new RestResponse(RestStatus.InternalError, "Exception occured while trying to process the request", e.Message);
+                return new RestResponse(RestStatus.InternalError, "Exception occurred while trying to process the request", e.Message);
             }
         }
 
