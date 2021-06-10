@@ -84,7 +84,7 @@ namespace Starwatch.Entities
                 {
                     Content = line,
                     Level = LogLevel.Error,
-                    Author = "UNKOWN"
+                    Author = "UNKNOWN"
                 };
             }
 
@@ -131,7 +131,6 @@ namespace Starwatch.Entities
                     };
                 }
             }
-
 
             //We are not a special chat condition, so just return what we have
             return new Message(server)
@@ -184,7 +183,7 @@ namespace Starwatch.Entities
                     break;
             }
 
-            //Check if its chat
+            //Check if it is chat
             bool ischat = level == LogLevel.Info && match.Groups[3].Success;
             
             return new Message(server)
