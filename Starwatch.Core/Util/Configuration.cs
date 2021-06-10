@@ -585,7 +585,7 @@ namespace Starwatch.Util
         /// <exception cref="ArgumentNullException">Thrown when path is null</exception>
         /// <exception cref="PathTooLongException">Thrown when path is too long. Must be less than 248chars</exception>
         /// <exception cref="DirectoryNotFoundException">Thrown when specific path is invalid</exception>
-        /// <exception cref="IOException">Thrown when a I/O error occured</exception>
+        /// <exception cref="IOException">Thrown when a I/O error occurred</exception>
         /// <exception cref="UnauthorizedAccessException">Thrown when path is readonly</exception>
         /// <exception cref="FileNotFoundException">Thrown when the file is not found</exception>
         /// <exception cref="NotSupportedException">Thrown when path is a invalid format</exception>
@@ -629,7 +629,7 @@ namespace Starwatch.Util
         /// <exception cref="ArgumentNullException">Thrown when there is no filename yet</exception>
         /// <exception cref="PathTooLongException">Thrown when path is too long. Must be less than 248chars</exception>
         /// <exception cref="DirectoryNotFoundException">Thrown when specific path is invalid</exception>
-        /// <exception cref="IOException">Thrown when a I/O error occured</exception>
+        /// <exception cref="IOException">Thrown when a I/O error occurred</exception>
         /// <exception cref="UnauthorizedAccessException">Thrown when path is readonly</exception>
         /// <exception cref="FileNotFoundException">Thrown when the file is not found</exception>
         /// <exception cref="NotSupportedException">Thrown when path is a invalid format</exception>
@@ -665,7 +665,7 @@ namespace Starwatch.Util
         /// <exception cref="ArgumentNullException">Thrown when path is null</exception>
         /// <exception cref="PathTooLongException">Thrown when path is too long. Must be less than 248chars</exception>
         /// <exception cref="DirectoryNotFoundException">Thrown when specific path is invalid</exception>
-        /// <exception cref="IOException">Thrown when a I/O error occured</exception>
+        /// <exception cref="IOException">Thrown when a I/O error occurred</exception>
         /// <exception cref="UnauthorizedAccessException">Thrown when path is readonly</exception>
         /// <exception cref="FileNotFoundException">Thrown when the file is not found</exception>
         /// <exception cref="NotSupportedException">Thrown when path is a invalid format</exception>
