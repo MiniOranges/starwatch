@@ -22,14 +22,13 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using Starwatch.Database;
 
 namespace Starwatch.Entities
 {
     public partial class SystemWorld
     {
         /// <summary>
-        /// Searches for all the cached systems asyncronously.
+        /// Searches for all the cached systems asynchronously.
         /// </summary>
         /// <returns></returns>
         public static async Task<HashSet<SystemWorld>> SearchCachedSystemsAsync(DbContext context)
@@ -47,7 +46,7 @@ namespace Starwatch.Entities
         }
 
         /// <summary>
-        /// Searches for all the cached systems asyncronously within the bounds.
+        /// Searches for all the cached systems asynchronously within the bounds.
         /// </summary>
         /// <returns></returns>
         public static async Task<HashSet<SystemWorld>> SearchCachedSystemsAsync(DbContext context, long? xMin, long? xMax, long? yMin, long? yMax)
