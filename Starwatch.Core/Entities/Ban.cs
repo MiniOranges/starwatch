@@ -236,10 +236,6 @@ namespace Starwatch.Entities
             if (ExpiryDate.HasValue)
                 data.Add("date_expired", ExpiryDate.Value);
 
-            //We are going to ignore legacy bans from now on!
-            //TODO: Create a ticket number
-            //if (!Ticket.HasValue) return false;
-
             //If we have a ticket, add it
             if (Ticket.HasValue && Ticket.Value > 0)
                 data.Add("ticket", Ticket.Value);
