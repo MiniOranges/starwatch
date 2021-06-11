@@ -343,15 +343,5 @@ namespace Starwatch.Entities
             //We failed
             return false;
         }
-
-        //public async Task<bool> SaveDetailsAsync(DbContext db )
-        //{
-        //    //We dont have anything, so abort
-        //    if (Details == null)
-        //        return false;
-        //
-        //    await Details.SaveAsync(db);
-        //    return true;
-        //}
     }
 }
