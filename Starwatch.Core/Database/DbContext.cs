@@ -343,10 +343,7 @@ namespace Starwatch.Database
             if (!await OpenAsync()) return null;
 
             //Wait for the semephore
-            //Logger.Log("Creating Command, Waiting Semaphore.. {0}", _semaphore.CurrentCount);
             await _semaphore.WaitAsync();
-
-            //Logger.Log("[+] {0}", query.Substring(0, Math.Min(query.Length, 50)));
             
             //Validate the command is empty
             if (_command != null)
@@ -402,7 +399,6 @@ namespace Starwatch.Database
             }
 
             _semaphore.Release();
-            //Logger.Log("[-] released");
         }
 
 
@@ -414,8 +410,6 @@ namespace Starwatch.Database
         {
             try
             {
-                //Logger.Log("[c] Attempting Connection...");
-
                 //Wait for our turn
                 await _semaphore.WaitAsync();
 
@@ -450,7 +444,6 @@ namespace Starwatch.Database
             finally
             {
                 //We are done, and dont need our turn anymore.
-                //Logger.Log("[c] State Changed");
                 _semaphore.Release();
             }
         }
@@ -463,7 +456,6 @@ namespace Starwatch.Database
             try
             {
                 //Close the connection asynchronously.
-                //Logger.Log("Closing SQL");
                 await _connection.CloseAsync();
                 IsConnected = false;
             }
