@@ -71,7 +71,6 @@ namespace Starwatch
                 //This may be first time use, so let's go ahead and create a new config file so the end user will be able to modify it.
                 Configuration.Save();
                 
-                
                 Logger.Log(
                     "\nNo SQL Passphrase was found. This is used to encrypt sensitive player data.\n" +
                     "Please modify starwatch.json and try again.\n\n" +
