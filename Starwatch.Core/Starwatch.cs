@@ -67,7 +67,21 @@ namespace Starwatch
 
             //Make sure we actually encrypt
             if (string.IsNullOrEmpty(settings.Passphrase))
-                throw new Exception("SQL Passphrase cannot be empty. This is used to encrypt sensitive player data!");
+            {
+                //This may be first time use, so let's go ahead and create a new config file so the end user will be able to modify it.
+                Configuration.Save();
+                
+                
+                Logger.Log(
+                    "\nNo SQL Passphrase was found. This is used to encrypt sensitive player data.\n" +
+                    "Please modify starwatch.json and try again.\n\n" +
+                    "Press any key to exit the application."
+                );
+
+                Console.ReadKey();
+                System.Environment.Exit(0);
+                //throw new Exception("SQL Passphrase cannot be empty. This is used to encrypt sensitive player data!");
+            }
 
             //Initialize the region export directory
             PythonScriptsDirectory = Configuration.GetString("python_parsers", "Resources/py");
