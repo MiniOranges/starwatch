@@ -121,7 +121,7 @@
 
         starwatch.on("OnServerReload", function(msg) { updateSettings(); });
         starwatch.on("OnServerStart", function(msg) { updateSettings(); });
-        starwatch.on("OnPlayerDisconnect", function (p) { });
+        starwatch.on("OnPlayerDisconnect", (p) => { });
 
         starwatch.on("OnChat", function(msg) { pushMessage('chat', msg.Author, msg.Content, true); });
         starwatch.on("log", function(log) 
@@ -443,14 +443,8 @@
 
                 if (previousSettings != null) 
                 {
-                    let players = starwatch.players.filter(function (p) { 
-                        return p && !p.IsAdmin;
-                    }).length;
-
-                    let admins = starwatch.players.filter(function (p) {
-                        return p && p.IsAdmin;
-                    }).length;
-
+                    let players = starwatch.players.filter((p) => p && !p.IsAdmin).length;
+                    let admins = starwatch.players.filter((p) => p && p.IsAdmin).length;
                     let max = previousSettings.MaxPlayers;
                     console.log(previousSettings);
                     playerchart.data.datasets[0].data = [
