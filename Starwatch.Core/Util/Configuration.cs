@@ -325,7 +325,7 @@ namespace Starwatch.Util
         }
 
         /// <summary>
-        /// Try to get a object. Will throw exceptions if the value does not exist or is not a obejct.
+        /// Try to get a object. Will throw exceptions if the value does not exist or is not a object.
         /// </summary>
         /// <param name="key">Key of the object</param>
         /// <returns>Returns the value stored in the configuration</returns>
@@ -336,7 +336,7 @@ namespace Starwatch.Util
             return GetObject<object>(key);
         }
         /// <summary>
-        /// Try to get a object. Will throw exceptions if the value does not exist or is not a obejct.
+        /// Try to get a object. Will throw exceptions if the value does not exist or is not a object.
         /// </summary>
         /// <param name="key">Key of the object</param>
         /// <returns>Returns the value stored in the configuration</returns>
