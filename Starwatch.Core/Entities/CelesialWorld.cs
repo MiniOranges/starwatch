@@ -117,21 +117,6 @@ namespace Starwatch.Entities
 
                 if (jobj["sky"]["planet"].HasValues)
                     PlanetGraphics = jobj["sky"]["planet"];
-
-
-
-                //Planet = jobj["celestial"]["coordinate"]["planet"].Value<int>();
-                //Satellite = jobj["celestial"]["coordinate"]["satellite"].Value<int>();
-                //if (Satellite.Value < 1) Satellite = null;
-                //
-                //System = new int[]
-                //{
-                //    jobj["celestial"]["coordinate"]["location"][0].Value<int>(),
-                //    jobj["celestial"]["coordinate"]["location"][1].Value<int>(),
-                //    jobj["celestial"]["coordinate"]["location"][2].Value<int>()
-                //};
-
-
             }
 
             /// <summary>
