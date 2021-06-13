@@ -62,7 +62,21 @@ namespace Starwatch.Monitoring
 
         public override Task Initialize()
         {
-            TriggerThreshold            = Configuration.GetInt("theshold", 10) * Weight;
+            int Threshold_Old = Configuration.GetInt("theshold", 10) * Weight; // Backwards compatibility with typo'd value.
+            if (Threshold_Old != 10)
+            {
+                TriggerThreshold = Configuration.GetInt("threshold", Threshold_Old) * Weight;
+            }
+            else
+            {
+                TriggerThreshold = Configuration.GetInt("threshold", 10) * Weight;
+            }
+
+            if (Configuration.HasKey("theshold"))
+            {
+                Configuration.RemoveKey("theshold");
+            }
+            
             DisableAnonymousConnections = Configuration.GetBool("disable_anonymous", true);
             RestartServer               = Configuration.GetBool("restart_server", true);
             return Task.CompletedTask;
