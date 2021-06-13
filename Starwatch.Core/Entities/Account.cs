@@ -22,6 +22,7 @@ using Starwatch.Database;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -91,6 +92,8 @@ namespace Starwatch.Entities
 
         private static Account FromDbDataReader(DbContext db, DbDataReader reader)
         {
+            // TBKIpICpPe/i898FUADFa9yRFt7HPByr0JhdPfFAhcnET+03qVvSdPlsTJgR48K9 = testuser
+
             return new Account()
             {
                 Name = reader.GetString("name"),
