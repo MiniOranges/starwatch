@@ -54,11 +54,11 @@ namespace Starwatch.API.Rest.Routing
             RouteType = routeType;
 
 
-            //Seperate the segments
+            //Separate the segments
             string[] segments = routeAttribute.GetSegments();
             Debug.Assert(segments.Length >= 1);
 
-            //Setup teh segment count and base route
+            //Setup the segment count and base route
             SegmentCount = segments.Length;
             BaseRoute = segments[0];
 
@@ -111,15 +111,15 @@ namespace Starwatch.API.Rest.Routing
         {
             string[] selfSegments = RouteAttribute.GetSegments();
 
-            //Make sure its all correct
+            //Make sure it is all correct
             Debug.Assert(selfSegments.Length == segments.Length);
             if (selfSegments.Length != segments.Length) return 0;
 
-            //Caculate the score
+            //Calculate the score
             int score = 0;
             for (int i = selfSegments.Length - 1; i >= 0; i--)
             {
-                if (selfSegments[i].Equals(segments[i])) score += 10;                       //We match exectly, so bonus points
+                if (selfSegments[i].Equals(segments[i])) score += 10;                       //We match exactly, so bonus points
                 else if (selfSegments[i][0] == RouteAttribute.ArgumentPrefix) score += 1;   //We match in the arguments, so some points
                 else return 0;                                                              //We dont match at all, so abort while we are ahead.
             }
@@ -157,13 +157,12 @@ namespace Starwatch.API.Rest.Routing
                     Debug.Assert(converter != null);
                     if (!converter.TryConvertArgument(handler, valueText, out value))
                         throw new ArgumentMappingException($"Cannot convert '{valueText}' to {map.property.PropertyType} with converter {converter.GetType().FullName}!");
-                    
                 }
                 else
                 {
                     if (map.property.PropertyType == typeof(string))
                     {
-                        //Its a string so literally just do string things
+                        //It is a string so literally just do string things
                         value = valueText;
                     }
                     else
@@ -182,7 +181,7 @@ namespace Starwatch.API.Rest.Routing
                     }
                 }
 
-                //Set the value (making sure we can actually do that first
+                //Set the value (making sure we can actually do that first)
                 Debug.Assert(map.property.CanWrite);
 
                 //Check if the value is null
@@ -208,7 +207,7 @@ namespace Starwatch.API.Rest.Routing
                 }
             }
 
-            //return the object
+            //Return the object
             return route;
         }   
     }

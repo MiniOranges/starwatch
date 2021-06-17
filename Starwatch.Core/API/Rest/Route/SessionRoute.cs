@@ -30,7 +30,7 @@ namespace Starwatch.API.Rest.Route
     [Route("/session", AuthLevel.Admin)]
     class SessionRoute : RestRoute
     {
-        //TODO: Implement Deep Analyisis
+        //TODO: Implement Deep Analysis
         public SessionRoute(RestHandler handler, Authentication authentication) : base(handler, authentication) { }
         public override RestResponse OnGet(Query query)
         {

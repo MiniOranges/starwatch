@@ -51,8 +51,8 @@
         </div>
         <div class="panel" id="right">
             <div class="stats">
-                    <canvas id="memChart" width="370" height="230" style='float:left'></canvas>
-                    <canvas id="playerChart" width="370" height="230" style='float:right'></canvas>
+                <canvas id="memChart" width="370" height="230" style='float:left'></canvas>
+                <canvas id="playerChart" width="370" height="230" style='float:right'></canvas>
             </div>
             <div class="players">
                 <table class="playerlist" style="width:100%">
@@ -75,8 +75,10 @@
         </div>
 
         <script>
-        var prependInstead = false; var autoscroll = false;
-        var logCounter = 0; var connectAttempts = 0;
+        var prependInstead = false;
+        var autoscroll = false;
+        var logCounter = 0;
+        var connectAttempts = 0;
         var showChat = false, showInfo = false, showWarning = false, showError = false;
         var allowAnonymousConnections = false;
         var previousSettings = null;
@@ -95,17 +97,19 @@
         starwatch.onRateLimitReached = function(ratelimit) 
         {
             console.error(ratelimit);
-            alert("RateLimited\nYour account has been ratelimted. Please wait " + (ratelimit.timeout / 1000) + "s before performing any actions!");
+            alert("RateLimited\nYour account has been rate-limited. Please wait " + (ratelimit.timeout / 1000) + "s before performing any actions!");
         }
+
         starwatch.onEventConnected = function () 
         { 
             connectAttempts = 0; 
             pushMessage("client", "client", "Connected to server..."); 
             updateSettings();
         }
+
         starwatch.onEventDisconnected = function (code, reason) 
         { 
-            //Clean up lose connections
+            //Clean up loose connections
             starwatch.close();
 
             pushMessage("erro", "client", "Failed to reconnect to the server.");
@@ -116,7 +120,7 @@
         starwatch.on("event", function(evt) 
         {
             if (evt._event != "OnChat")
-                pushMessage("client", "client", evt._event + " occured");
+                pushMessage("client", "client", evt._event + " occurred");
         })
 
         starwatch.on("OnServerReload", function(msg) { updateSettings(); });
@@ -157,7 +161,7 @@
         }
         
         function setAutoscroll(state) {            
-            autoscroll = state;            
+            autoscroll = state;
             $(".toolbar button#autoscroll").html("Autoscroll" + (state ? " &#9745;" : " &#9744;"));
             pushMessage("client", "client", "Autoscroll is now " + (state ? "enabled" : "disabled"));
             
@@ -170,9 +174,9 @@
             let state = !allowAnonymousConnections;
             $(".toolbar button#allowAnon").html("Working....");
 
-            //TODO: Implement this
             starwatch.patchSettings({ AllowAnonymousConnections: state}, true, function(res) { updateSettings(); }); 
         }
+
         function toggleAutoscroll() { setAutoscroll(!autoscroll); }
         function toggleFilter(tag) 
         {
@@ -216,11 +220,13 @@
 
             pushMessage("client", "client", label + " is now " + (isEnabled ? "enabled" : "disabled"));
         }
+
         function clearMessage(tag) 
         {
             console.log("Removing " + tag);
             $("table.log tr#" + tag).fadeOut("normal", function() {  this.remove(); });
-        }        
+        }
+
         /** Pushes a message */
         function pushMessage(tag, author, content, linkAuthor = false) 
         {
@@ -333,6 +339,12 @@
             updatePlayerGraph();
         }
 
+        //Source: http://stackoverflow.com/a/4835406/5010271
+        function escapeHtml(text) {
+            var map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+            return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+        }
+
         /** Updates the player */
         function updatePlayer(player) 
         {
@@ -342,7 +354,7 @@
             parent.children("#location").text(player.Location == null ? "-" : player.Location)
             parent.children("#location").css('color',  locationColor(player.Location));
             
-            if (player.Nickname != null) parent.children("#name").html("<span id='top'>" + formatStarboundTags(player.Nickname) + "</span><span id='bottom'>" + escapeStarboundTags(player.Username) + "</span>");
+            if (player.Nickname != null) parent.children("#name").html("<span id='top'>" + formatStarboundTags(player.Nickname) + "</span><span id='bottom'>" + escapeStarboundTags(escapeHtml(player.Username)) + "</span>");
             else parent.children("#name").html(formatStarboundTags(player.Username));
 
             if (player.UUID != null) parent.children("#ID").html("<span id='top'>" + player.IP + "</span><span id='bottom'>" + player.UUID + "</span>");

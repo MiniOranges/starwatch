@@ -298,7 +298,7 @@ namespace Starwatch.Starbound
                     var res = await Kick(player, ban.GetFormattedReason());
                     if (!res.Success)
                     {
-                        Logger.LogError($"Error occured while trying to kick user: {res.Message}");
+                        Logger.LogError($"Error occurred while trying to kick user: {res.Message}");
                     }
                 }
             }
@@ -625,7 +625,7 @@ namespace Starwatch.Starbound
             }
             catch(Exception e)
             {
-                Logger.LogError(e, "Exception Occured while saving: {0}");
+                Logger.LogError(e, "Exception Occurred while saving: {0}");
                 return false;
             }
         }
@@ -669,7 +669,7 @@ namespace Starwatch.Starbound
             }
             catch(Exception e)
             {
-                Logger.LogError(e, "Exception Occured while saving: {0}");
+                Logger.LogError(e, "Exception Occurred while saving: {0}");
                 return false;
             }
         }

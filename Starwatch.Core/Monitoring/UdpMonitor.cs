@@ -48,11 +48,11 @@ namespace Starwatch.Monitoring
                 if (Server.Configurator == null)
                     return;
 
-                //Skip the server that isnt running
+                //Skip the server that isn't running
                 if (!Server.IsRunning)
                     return;
 
-                //Make sure we are runnign the query server
+                //Make sure we are running the query server
                 if (Server.Configurator.QueryServerPort == 0)
                 {
                     Logger.LogWarning("Cannot run UDP checks because the server has disabled its query server.");
@@ -123,19 +123,19 @@ namespace Starwatch.Monitoring
                 Logger.Log("Waiting for response...");
                 var result = await udpClient.ReceiveAsync();
 
-                //We where successfull!
+                //We were successful!
                 Logger.Log("Successfull handshake performed! Recieved {0} bytes", result.Buffer.Length);
                 return true;
             }
             catch (Exception e)
             {
-                //A error has occured while checking the server
-                Logger.LogWarning("An exception has occured while trying to check the server: " + e.Message);
+                //An error has occurred while checking the server
+                Logger.LogWarning("An exception has occurred while trying to check the server: " + e.Message);
                 return false;
             }
             finally
             {
-                //Finally close the client, disposing of its uselesness
+                //Finally close the client, disposing of its uselessness
                 udpClient.Close();
             }
         }

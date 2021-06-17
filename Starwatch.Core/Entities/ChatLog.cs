@@ -55,8 +55,6 @@ namespace Starwatch.Entities
         public ChatLog(Server server) : this()
         {
             Server = server;
-            //if (server.TryGetMonitor<UptimeMonitor>(out var m))
-            //    UptimeId = m.CurrentUptimeId;
         }
 
         public ChatLog(Message message) : this(message.Server)

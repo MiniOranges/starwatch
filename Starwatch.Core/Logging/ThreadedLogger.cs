@@ -57,7 +57,7 @@ namespace Starwatch.Logging
 				Append = append;
 			}
 
-			//Preepare teh queue
+			//Prepare the queue
 			_conqueue = new ConcurrentQueue<string>();
 
 			//configure background worker

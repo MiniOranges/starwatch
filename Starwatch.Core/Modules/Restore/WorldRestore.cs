@@ -61,6 +61,7 @@ namespace Starwatch.Modules.Restore
         /// Creates a new world restore monitor
         /// </summary>
         /// <param name="monitor"></param>
+        /// <param name="world"></param>
         public WorldRestore(RestoreMonitor monitor, World world)
         {
             Monitor = monitor;
@@ -70,8 +71,6 @@ namespace Starwatch.Modules.Restore
         /// <summary>
         /// Creates a new restore image.
         /// </summary>
-        /// <param name="server"></param>
-        /// <param name="restoreDirectory"></param>
         public void Snapshot()
         {
             if (!Directory.Exists(Monitor.RestoreDirectory))
@@ -85,8 +84,6 @@ namespace Starwatch.Modules.Restore
         /// <summary>
         /// Restores the world
         /// </summary>
-        /// <param name="server"></param>
-        /// <param name="restoreDirectory"></param>
         /// <returns></returns>
         public async Task<bool> RestoreAsync()
         {
@@ -118,7 +115,6 @@ namespace Starwatch.Modules.Restore
         /// <summary>
         /// Deletes the restore file
         /// </summary>
-        /// <param name="restoreDirectory"></param>
         /// <returns></returns>
         public async Task<bool> DeleteAsync(DbContext db)
         {
@@ -135,6 +131,7 @@ namespace Starwatch.Modules.Restore
         /// Loads all the world restores
         /// </summary>
         /// <param name="db"></param>
+        /// <param name="monitor"></param>
         /// <returns></returns>
         public static Task<List<WorldRestore>> LoadAllAsync(DbContext db, RestoreMonitor monitor) => db.SelectAsync(TABLE, (r) => FromDBReader(r, monitor), order: "priority");
         public async Task<bool> LoadAsync(DbContext db)

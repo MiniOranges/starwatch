@@ -27,6 +27,7 @@ namespace Starwatch.Monitoring
 {
     class InvalidCoordMonitor : ConfigurableMonitor
     {
+        //Log Example
         //Flying ship for player 15 to 4327:3735:1393
         //UniverseServer: Creating new system world at location (4327, 3735, 1393)
         //UniverseServer: exception caught: (CelestialException) CelestialMasterDatabase::childOrbits called on invalid coordinate
@@ -60,7 +61,7 @@ namespace Starwatch.Monitoring
         {
             //Load the initial ban reason.
             BanReason = Configuration.GetString("ban_format",
-@"^orange;You have been banned ^white;automatically ^orange;for generate invalid coordinates.
+@"^orange;You have been banned ^white;automatically ^orange;for generating invalid coordinates.
 ^orange;Your ^pink;ticket ^orange; is ^white;{ticket}
 
 ^blue;Please make an appeal at
@@ -71,7 +72,7 @@ namespace Starwatch.Monitoring
 
         public override async Task<bool> HandleMessage(Message msg)
 		{
-            //Check if its a flying message
+            //Check if it is a flying message
             if (msg.Level == Message.LogLevel.Info)
             {
                 if (msg.Content.StartsWith(FLYING_SHIP))

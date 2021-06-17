@@ -56,7 +56,7 @@ namespace Starwatch.API.Rest.Routing
         public DbContext DbContext => Handler.ApiHandler.DbContext;
 
         /// <summary>
-        /// Is the endpoint silent and not log?
+        /// Is the endpoint silent and not logged?
         /// </summary>
         public virtual bool Silent => false;
 

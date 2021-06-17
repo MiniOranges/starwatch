@@ -57,7 +57,7 @@ namespace Starwatch.API.Web
 
         public bool HandleRequest(RequestMethod method, HttpRequestEventArgs args, Authentication auth)
         {
-            //This isnt a auth request
+            //This is not an auth request
             if (args.Request.Url.Segments.Length < 3) return false;
             if (args.Request.Url.Segments[1] != "universe/") return false;
             if (args.Request.Url.Segments[2] != "world/") return false;
@@ -122,7 +122,7 @@ namespace Starwatch.API.Web
             {
                 try
                 {
-                    //Trigger a auth request
+                    //Trigger an auth request
                     auth.RecordAction("world:json:download");
 
                     //Export the json data. We won't allow overwrites so it wont even attempt to generate a new one.
@@ -149,7 +149,7 @@ namespace Starwatch.API.Web
             //If it is a get, then return the file
             if (AllowDownloads && method == RequestMethod.Get)
             {
-                //Trigger a auth request
+                //Trigger an auth request
                 auth.RecordAction("world:download");
 
                 args.Response.WriteFile(world.GetAbsolutePath(API.Starwatch.Server));
@@ -198,10 +198,10 @@ namespace Starwatch.API.Web
                     return true;
                 }
 
-                //World is loaded, its passed all our checks... I guess finally upload it
+                //World is loaded, it has passed all our checks... I guess finally upload it
                 File.WriteAllBytes(world.GetAbsolutePath(API.Starwatch.Server), multipart.Content);
 
-                //Tell the world to delete its shit
+                //Tell the world to delete its stuff
                 if (world is CelestialWorld celestial)
                     celestial.DeleteDetailsAsync(API.Starwatch.Server).Wait();
 
@@ -225,7 +225,7 @@ namespace Starwatch.API.Web
                     return true;
                 }
 
-                //Trigger a auth request
+                //Trigger an auth request
                 auth.RecordAction("world:delete");
 
                 //Delete the world

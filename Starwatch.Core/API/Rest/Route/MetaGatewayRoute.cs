@@ -51,7 +51,6 @@ namespace Starwatch.API.Rest.Route
             });
         }
 
-
         struct GatewayListing
         {
             public int ActiveSessions { get; set; }

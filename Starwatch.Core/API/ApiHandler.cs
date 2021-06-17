@@ -17,25 +17,6 @@ You should have received a copy of the GNU Affero General Public License
 along with this program. If not, see < https://www.gnu.org/licenses/ >.
 END LICENSE DISCLAIMER
 */
-/*
-START LICENSE DISCLAIMER
-Starwatch is a Starbound Server manager with player management, crash recovery and a REST and websocket (live) API. 
-Copyright(C) 2020 Lachee
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU Affero General Public License as published
-by the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU Affero General Public License for more details.
-
-You should have received a copy of the GNU Affero General Public License
-along with this program. If not, see < https://www.gnu.org/licenses/ >.
-END LICENSE DISCLAIMER
-*/
 using Newtonsoft.Json;
 using Starwatch.API.Gateway;
 using Starwatch.API.Rest;
@@ -162,7 +143,7 @@ namespace Starwatch.API
             if (BlocklistHandler != null && BlocklistHandler.HandleRequest(method, args, authentication))
                 return;
 
-            //Double check teh rate limits. Every hit counts as one. Additional hits maybe include.
+            //Double check the rate limits. Every hit counts as one. Additional hits may be included.
             authentication.RecordAction($"http:{method}");
             authentication.IncrementRateLimit();
 
@@ -219,15 +200,15 @@ namespace Starwatch.API
                 }
                 catch (Exception e)
                 {
-                    //Internal error occured while trying to process the rest.
+                    //Internal error occurred while trying to process the rest.
                     Logger.LogError("Rest Handler failed: " + requestHandlers[i].GetType().ToString());
-                    Logger.LogError(e, "Exception Occured Processing Request: {0}");
+                    Logger.LogError(e, "Exception Occurred Processing Request: {0}");
                     args.Response.WriteRest(new RestResponse(RestStatus.InternalError, e.Message, e.StackTrace));
                     return;
                 }
             }
 
-            //We didnt find anything so return a 404
+            //We didn't find anything so return a 404
             args.Response.StatusCode = (int)HttpStatusCode.NotFound;
             args.Response.WriteText("File Not Found");
             args.Response.Close();
@@ -331,7 +312,7 @@ namespace Starwatch.API
             Configuration.SetKey("blocklist", BlocklistHandler.BlockAddresses, save: save);
         }
 
-        #region credentials
+        #region Credentials
 
         /// <summary>
         /// Finds the first authentication with matching refresh token
@@ -384,7 +365,7 @@ namespace Starwatch.API
         }
 
         /// <summary>
-        /// Gets a list of all authentications. Used soley for maintainence.
+        /// Gets a list of all authentications. Used solely for maintenance.
         /// </summary>
         /// <returns></returns>
         public string[] GetAuthenticationNames()
@@ -393,7 +374,7 @@ namespace Starwatch.API
         }
 
         /// <summary>
-        /// Attempts to get the authentication. If it does not exist, null will be returned.
+        /// Attempts to get the authentication. If it does not exist, <see langword="null"/> will be returned.
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -407,7 +388,7 @@ namespace Starwatch.API
         }
 
         /// <summary>
-        /// Attemps to get the authentication. If it does not exist, it will be created using the identity.
+        /// Attempts to get the authentication. If it does not exist, it will be created using the identity.
         /// </summary>
         /// <param name="identity"></param>
         /// <returns></returns>
@@ -447,7 +428,7 @@ namespace Starwatch.API
                 auth = CreateUserAuthentication(identity.Name, identity);
             }
 
-            //Add to the cache if its not null then return teh result.
+            //Add to the cache if it's not null then return the result.
             if (auth != null)  _authentications.Add(auth.Name, auth);
             return auth;
         }

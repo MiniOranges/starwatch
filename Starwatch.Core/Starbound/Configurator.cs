@@ -302,7 +302,7 @@ namespace Starwatch.Starbound
         }
 
         /// <summary>
-        /// Gets a ban asyncronously.
+        /// Gets a ban asynchronously.
         /// </summary>
         /// <param name="ticket"></param>
         /// <returns></returns>

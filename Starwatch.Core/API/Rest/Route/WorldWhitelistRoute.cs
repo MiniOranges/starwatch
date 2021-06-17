@@ -43,7 +43,7 @@ namespace Starwatch.API.Rest.Route
         /// </summary>
         public override RestResponse OnGet(Query query)
         {      
-            //get the manager
+            //Get the manager
             var manager = GetWhitelistManager();
             if (manager == null) return new RestResponse(RestStatus.ResourceNotFound, msg: "Could not find the protection manager!");
 
@@ -51,7 +51,7 @@ namespace Starwatch.API.Rest.Route
             ProtectedWorld protection = manager.GetProtectionAsync(World).Result;
             if (protection == null) return new RestResponse(RestStatus.ResourceNotFound, msg: "The world does not have any protection.");
 
-            //return the world
+            //Return the world
             return new RestResponse(RestStatus.OK, res: new OptionalProtectedWorld(protection));
         }
         
@@ -61,7 +61,7 @@ namespace Starwatch.API.Rest.Route
         /// </summary>
         public override RestResponse OnDelete(Query query)
         {       
-            //get the manager
+            //Get the manager
             var manager = GetWhitelistManager();
             if (manager == null) return new RestResponse(RestStatus.ResourceNotFound, msg: "Could not find the protection manager!");
 
@@ -74,8 +74,6 @@ namespace Starwatch.API.Rest.Route
                 //Delete the protection
                 var result = await manager.RemoveProtectionAsync(protection);
                 return new RestResponse(RestStatus.OK, result);
-
-
             });
 
             if (query.GetBool(Query.AsyncKey, false)) return RestResponse.Async;
@@ -87,17 +85,16 @@ namespace Starwatch.API.Rest.Route
         /// </summary>
         public override RestResponse OnPost(Query query, object payloadObject)
         {
-            //get the manager
+            //Get the manager
             var manager = GetWhitelistManager();
             if (manager == null) return new RestResponse(RestStatus.ResourceNotFound, msg: "Could not find the protection manager!");
 
-            //Get the payload and make sure it svalid
+            //Get the payload and make sure it is valid
             OptionalProtectedWorld patch = (OptionalProtectedWorld)payloadObject;
             if (!patch.AllowAnonymous.HasValue) return new RestResponse(RestStatus.BadRequest, msg: "Cannot create a new protection. The 'AllowAnonymous' is null or missing.");
             if (!patch.Mode.HasValue) return new RestResponse(RestStatus.BadRequest, msg: "Cannot create a new protection. The 'Mode' is null or missing.");
 
             var task = Task.Run(async () => {
-
                 //Add the protection
                 var protection = await manager.SetProtectionAsync(World, patch.Mode.Value, patch.AllowAnonymous.Value);
 
@@ -125,7 +122,7 @@ namespace Starwatch.API.Rest.Route
         /// </summary>
         public override RestResponse OnPatch(Query query, object payloadObject)
         {
-            //get the manager
+            //Get the manager
             var manager = GetWhitelistManager();
             if (manager == null) return new RestResponse(RestStatus.ResourceNotFound, msg: "Could not find the protection manager!");
 
@@ -134,12 +131,11 @@ namespace Starwatch.API.Rest.Route
 
             //Run the patch
             var task = Task.Run(async () => {
-
                 //Get the protection
                 var protection = await manager.GetProtectionAsync(World);
                 if (protection == null) return OnPost(query, payloadObject);
 
-                //update values
+                //Update values
                 if (patch.AllowAnonymous.HasValue)
                     protection.AllowAnonymous = patch.AllowAnonymous.Value;
 
@@ -171,7 +167,7 @@ namespace Starwatch.API.Rest.Route
             return task.Result;
 
 
-            ////get the manager
+            ////Get the manager
             //var manager = GetWhitelistManager();
             //if (manager == null) return new RestResponse(RestStatus.ResourceNotFound, msg: "Could not find the protection manager!");
             //

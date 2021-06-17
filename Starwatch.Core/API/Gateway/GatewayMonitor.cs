@@ -31,7 +31,7 @@ namespace Starwatch.API.Gateway
 
         public GatewayMonitor(Server server) : base(server, "Gateway")
         {
-            //=== Player EVENTS
+            //=== Player Events
             server.Connections.OnPlayerConnect += (player) =>
                 Api.BroadcastRoute(new PlayerDetailsRoute(player), "OnPlayerConnect", query: new Web.Query() { { "skip_list", "true" } });
 
@@ -51,7 +51,7 @@ namespace Starwatch.API.Gateway
             
             //=== Account Events
 
-            //=== RCON EVENTS
+            //=== RCON Events
             server.OnRconClientCreated += (starboundServer, rconClient) =>
             {
                 rconClient.OnServerReload += (sender, rconResponse) =>

@@ -55,7 +55,7 @@ namespace Starwatch.API.Web
 
         public bool HandleRequest(RequestMethod method, HttpRequestEventArgs args, Authentication auth)
         {
-            //This isnt a auth request
+            //This isn't an auth request
             if (args.Request.Url.Segments.Length < 3) return false;
             if (args.Request.Url.Segments[1] != ROOT_URL) return false;
 
@@ -81,7 +81,7 @@ namespace Starwatch.API.Web
             //Register the action
             auth.RecordAction("auth:token");
 
-            //Make sure its a valid method
+            //Make sure it is a valid method
             if (method != RequestMethod.Post)
             {
                 args.Response.WriteRest(new Rest.RestResponse(Rest.RestStatus.BadMethod, msg: "Post was expected"));
@@ -179,7 +179,7 @@ namespace Starwatch.API.Web
             //Register the action
             auth.RecordAction("auth:authorize");
 
-            //Make sure its a valid method
+            //Make sure it is a valid method
             if (method != RequestMethod.Get)
             {
                 args.Response.StatusCode = (int)HttpStatusCode.MethodNotAllowed;
@@ -187,7 +187,7 @@ namespace Starwatch.API.Web
                 return;
             }
 
-            //Only users may use this endpoing
+            //Only users may use this endpoint
             if (!auth.IsUser)
             {
                 args.Response.StatusCode = (int)HttpStatusCode.Forbidden;
@@ -207,7 +207,7 @@ namespace Starwatch.API.Web
             if (!query.TryGetString("client_id", out clientID) || !API.ScanBotAccounts(clientID, out botAccount))
             {
                 args.Response.StatusCode = (int)HttpStatusCode.Forbidden;
-                args.Response.WriteText("Invalid client_id. Please do not ever use this service again, it maybe trying to steal your credentials!");
+                args.Response.WriteText("Invalid client_id. Please do not ever use this service again, it may be trying to steal your credentials!");
                 return;
             }
             
@@ -219,7 +219,7 @@ namespace Starwatch.API.Web
                 return;
             }
 
-            //Validate the response tpye
+            //Validate the response type
             if (!query.TryGetString("response_type", out responseType) || !(responseType == "code" || responseType == "token"))
             {
                 args.Response.StatusCode = (int)HttpStatusCode.Forbidden;
@@ -227,7 +227,7 @@ namespace Starwatch.API.Web
                 return;
             }
 
-            //If its a token lets return the token asap
+            //If it is a token lets return the token asap
             if (responseType == "token")
             {
                 //Only admin bots can get tokens
@@ -246,7 +246,7 @@ namespace Starwatch.API.Web
                 return;
             }
 
-            //Its a simple code one.
+            //It is a simple code one.
             if (responseType == "code")
             {
                 //Generate some values;

@@ -40,7 +40,7 @@ namespace Starwatch.Modules.Whitelist
         public WhitelistManager Manager { get; }
 
         /// <summary>
-        /// Name of hte protection
+        /// Name of the protection
         /// </summary>
         public string Name { get; set; }
 
@@ -88,7 +88,7 @@ namespace Starwatch.Modules.Whitelist
         public async Task<bool> CheckPermissionAsync(Account account)
         {
             //If the account is anonymous, return if we allow anonymous.
-            if (account == null || account.Name.Equals(Account.Annonymous))
+            if (account == null || account.Name.Equals(Account.Anonymous))
                 return AllowAnonymous;
 
             //Check if the account is listed.
@@ -99,7 +99,7 @@ namespace Starwatch.Modules.Whitelist
         }
 
         /// <summary>
-        /// Checks iif hte player is allowed in this world
+        /// Checks if the player is allowed in this world
         /// </summary>
         /// <param name="player"></param>
         /// <returns></returns>

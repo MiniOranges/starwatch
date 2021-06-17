@@ -39,10 +39,10 @@ namespace Starwatch.API.Gateway
             if (Authentication == null && !ValidateAuthentication())
                 return;
 
-            //Make sure its binary
+            //Make sure it is binary
             if (!msg.IsBinary)
             {
-                Logger.Log("Tried to get data but it wasnt sent in binary");
+                Logger.Log("Tried to get data but it wasn't sent in binary");
                 Terminate(CloseStatusCode.UnsupportedData, "binary only");
                 return;
             }

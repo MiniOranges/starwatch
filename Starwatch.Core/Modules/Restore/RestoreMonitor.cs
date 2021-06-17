@@ -38,9 +38,7 @@ namespace Starwatch.Modules.Restore
         public override int Priority => 10;
         public string RestoreDirectory { get; private set; }
 
-        public RestoreMonitor(Server server) : base(server, "Restore Monitor")
-        {
-        }
+        public RestoreMonitor(Server server) : base(server, "Restore Monitor") { }
 
         public override Task Initialize()
         {
@@ -48,10 +46,9 @@ namespace Starwatch.Modules.Restore
             return Task.CompletedTask;
         }
 
-
         public override async Task OnServerPreStart()
         {
-            Logger.Log("Restoring all the worlds...");
+            Logger.Log("Restoring all of the worlds...");
             await RestoreAllAsync();
         }
 

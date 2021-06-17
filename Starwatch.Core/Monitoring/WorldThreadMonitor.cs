@@ -42,7 +42,7 @@ namespace Starwatch.Monitoring
 
         public override Task Initialize()
         {
-            Logger.Log("Disagrement Ban Message: " + BanFormat);
+            Logger.Log("Disagreement Ban Message: " + BanFormat);
             KickFormat = Configuration.GetString("kick_reason", "^orange;You have been kicked for causing a world exception.\n^red;{exception}");
             BanFormat = Configuration.GetString("ban_reason", "^orange;You have been banned ^white;automatically ^orange;for causing a world exception.\n^red;{exception}\n\n^orange;Your ^pink;ticket ^orange; is ^white;{ticket}");
             return Task.CompletedTask;
@@ -73,7 +73,7 @@ namespace Starwatch.Monitoring
                     if (report.Exception.Contains("(IOException)"))
                         throw new ServerShutdownException("World Thread Exception - IO Exception");
 
-                    /* Don't do any of this. We want to leave the palyer as is. They can go free.
+                    /* Don't do any of this. We want to leave the player as is. They can go free.
                     //Parse the name
                     if (int.TryParse(client, out var cid))
                     {

@@ -58,7 +58,7 @@ namespace Starwatch.Database
         public string Encrypt(string str) => str.Encrypt(Settings.Passphrase);
 
         /// <summary>
-        /// Does a rough decryption of a string
+        /// Does a rough decryption of a string.
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
@@ -89,10 +89,10 @@ namespace Starwatch.Database
         }
 
         /// <summary>
-        /// Selects just one elmement from the query
+        /// Selects just one elmement from the query.
         /// </summary>
         /// <param name="query"></param>
-        /// <param name="action"></param>
+        /// <param name="callback"></param>
         /// <param name="arguments"></param>
         /// <returns></returns>
         public async Task<T> ExecuteOneAsync<T>(string query, Func<DbDataReader, T> callback, Dictionary<string, object> arguments = null)
@@ -162,7 +162,7 @@ namespace Starwatch.Database
                     }
                 }
 
-                //return the list
+                //Return the list
                 return results;
             }
             finally
@@ -270,10 +270,10 @@ namespace Starwatch.Database
         }
 
         /// <summary>
-        /// Inserts or Updates the data asyncronously
+        /// Inserts or Updates the data asynchronously
         /// </summary>
-        /// <param name="query"></param>
-        /// <param name="arguments"></param>
+        /// <param name="table"></param>
+        /// <param name="columns"></param>
         /// <returns></returns>
         public async Task<long> InsertUpdateAsync(string table, Dictionary<string, object> columns)
         {
@@ -302,7 +302,7 @@ namespace Starwatch.Database
         /// </summary>
         /// <param name="table"></param>
         /// <param name="condition"></param>
-        /// <param name="parameters"></param>
+        /// <param name="limit"></param>
         /// <returns></returns>
         public async Task<bool> DeleteAsync(string table, Dictionary<string, object> condition, int? limit = null)
         {
@@ -332,7 +332,6 @@ namespace Starwatch.Database
         /// Creates a command with arguments
         /// </summary>
         /// <param name="query"></param>
-        /// <param name="arguments"></param>
         /// <returns></returns>
         public async Task<MySqlCommand> CreateCommand(string query)
         {
@@ -344,10 +343,7 @@ namespace Starwatch.Database
             if (!await OpenAsync()) return null;
 
             //Wait for the semephore
-            //Logger.Log("Creating Command, Waiting Semaphore.. {0}", _semaphore.CurrentCount);
             await _semaphore.WaitAsync();
-
-            //Logger.Log("[+] {0}", query.Substring(0, Math.Min(query.Length, 50)));
             
             //Validate the command is empty
             if (_command != null)
@@ -403,7 +399,6 @@ namespace Starwatch.Database
             }
 
             _semaphore.Release();
-            //Logger.Log("[-] released");
         }
 
 
@@ -415,8 +410,6 @@ namespace Starwatch.Database
         {
             try
             {
-                //Logger.Log("[c] Attempting Connection...");
-
                 //Wait for our turn
                 await _semaphore.WaitAsync();
 
@@ -451,7 +444,6 @@ namespace Starwatch.Database
             finally
             {
                 //We are done, and dont need our turn anymore.
-                //Logger.Log("[c] State Changed");
                 _semaphore.Release();
             }
         }
@@ -463,14 +455,13 @@ namespace Starwatch.Database
         {
             try
             {
-                //Close the connection asyncronously.
-                //Logger.Log("Closing SQL");
+                //Close the connection asynchronously.
                 await _connection.CloseAsync();
                 IsConnected = false;
             }
             catch (Exception e)
             {
-                //An error has occured while trying to close it.
+                //An error has occurred while trying to close it.
                 Logger.LogError(e, "SQL Close Exception.");
             }
             finally
@@ -489,7 +480,7 @@ namespace Starwatch.Database
             if (_connection != null)
             {
                 //We are still apparently connected, force close it if we can.
-                // We don't care for errors because we will handle them later anyways.
+                //We don't care for errors because we will handle them later anyways.
                 if (IsConnected)
                     try { _connection.Close(); } catch (Exception) { }
                 
@@ -508,7 +499,7 @@ namespace Starwatch.Database
         public void Dispose() { DisposeConnection(); }
 
         /// <summary>
-        /// Imports a SQL export from phpMyAdmin
+        /// Imports an SQL export from phpMyAdmin
         /// </summary>
         /// <param name="filepath"></param>
         /// <param name="replacePrefix"></param>

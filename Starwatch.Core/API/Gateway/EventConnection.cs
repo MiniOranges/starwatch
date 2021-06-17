@@ -57,10 +57,10 @@ namespace Starwatch.API.Gateway
             if (Authentication == null && !ValidateAuthentication())
                 return;
 
-            //Make sure its binary
+            //Make sure it is binary
             if (!msg.IsText)
             {
-                Logger.Log("Tried to get data but it wasnt sent in text");
+                Logger.Log("Tried to get data but it wasn't sent in text");
                 Terminate(CloseStatusCode.UnsupportedData, "Text only");
                 return;
             }
@@ -116,7 +116,7 @@ namespace Starwatch.API.Gateway
                 Reason = reason,
             };
 
-            //Invoke the OnGet asn serialize the response
+            //Invoke the OnGet and serialize the response
             string json = JsonConvert.SerializeObject(response);
             _ = Task.Run(() => Send(json));
         }
@@ -129,8 +129,7 @@ namespace Starwatch.API.Gateway
         /// <param name="reason"></param>
         /// <param name="query"></param>
         public void SendRoute(GatewayEventPayloadCallback callback, string evt, string reason = "")
-        { 
-            
+        {
             //Validate the authentication
             if (Authentication == null && !ValidateAuthentication())
                 return;
@@ -150,7 +149,7 @@ namespace Starwatch.API.Gateway
                 return;
             }
 
-            //Make sure data isnt null
+            //Make sure data isn't null
             if (data == null) return;
 
             //Create a new event response

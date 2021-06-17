@@ -70,7 +70,7 @@ namespace Starwatch.Entities
         }
 
         /// <summary>
-        /// Implicidly casts a TaggedText into a string. This way it will not be required to use ToString() or do a cast.
+        /// Implicitly casts a TaggedText into a string. This way it will not be required to use ToString() or do a cast.
         /// </summary>
         /// <param name="text"></param>
         public static implicit operator string(TaggedText text)

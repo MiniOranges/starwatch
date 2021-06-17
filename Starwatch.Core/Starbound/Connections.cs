@@ -182,7 +182,7 @@ namespace Starwatch.Starbound
 
                     try
                     {
-                        //Tell the world the event occured
+                        //Tell the world the event occurred
                         OnPlayerUpdate?.Invoke(_connections[connection]);
                     }
                     catch (Exception e)

@@ -20,7 +20,7 @@ END LICENSE DISCLAIMER
 namespace Starwatch.API
 {
     /// <summary>
-    /// The type of authentication, ordered in terms of permission level, where SUperUser is the highest.
+    /// The type of authentication, ordered in terms of permission level, where SuperUser is the highest.
     /// </summary>
     public enum AuthLevel
     {
@@ -35,7 +35,7 @@ namespace Starwatch.API
         User = 1,
 
         /// <summary>
-        /// The next step up from <see cref="User"/>, a Admin is someone with a starbound account that is admin. This will allow access to most parts of the API
+        /// The next step up from <see cref="User"/>, an Admin is someone with a starbound account that is admin. This will allow access to most parts of the API
         /// </summary>
         Admin = 2,
 

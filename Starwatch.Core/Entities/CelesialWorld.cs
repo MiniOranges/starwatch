@@ -66,10 +66,10 @@ namespace Starwatch.Entities
             [JsonProperty("Name")]
             public string NameTagged => Name?.TaggedContent;
 
-            public string Description { get; set; } //Tier 3 Moon etc. celestial/parameters/description
+            public string Description { get; set; }   //Tier 3 Moon etc. celestial/parameters/description
             public string TerrainSize { get; set; }   //small, medium, etc. celestial/parameters/worldSize
             public string TerrainType { get; set; }   //Terrestrial. celestial/parameters/worldType
-            public string PrimaryBiome { get; set; } //The primary biome, like savannah. world/primaryBiome
+            public string PrimaryBiome { get; set; }  //The primary biome, like savannah. world/primaryBiome
 
             //public int Planet { get; set; }         //The planet id. celestial/coordinate/planet
             //public int? Satellite { get; set; }     //This will be 0 if we are not a satellite. celestial/coordinate/satellite
@@ -117,21 +117,6 @@ namespace Starwatch.Entities
 
                 if (jobj["sky"]["planet"].HasValues)
                     PlanetGraphics = jobj["sky"]["planet"];
-
-
-
-                //Planet = jobj["celestial"]["coordinate"]["planet"].Value<int>();
-                //Satellite = jobj["celestial"]["coordinate"]["satellite"].Value<int>();
-                //if (Satellite.Value < 1) Satellite = null;
-                //
-                //System = new int[]
-                //{
-                //    jobj["celestial"]["coordinate"]["location"][0].Value<int>(),
-                //    jobj["celestial"]["coordinate"]["location"][1].Value<int>(),
-                //    jobj["celestial"]["coordinate"]["location"][2].Value<int>()
-                //};
-
-
             }
 
             /// <summary>
@@ -343,15 +328,5 @@ namespace Starwatch.Entities
             //We failed
             return false;
         }
-
-        //public async Task<bool> SaveDetailsAsync(DbContext db )
-        //{
-        //    //We dont have anything, so abort
-        //    if (Details == null)
-        //        return false;
-        //
-        //    await Details.SaveAsync(db);
-        //    return true;
-        //}
     }
 }

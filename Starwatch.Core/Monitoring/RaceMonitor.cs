@@ -80,7 +80,7 @@ We detected the race ^white;'{key}'
                     _errorConnection = -1;
                 }
 
-                //If this is our first error, we need to hold the lastest player accountable
+                //If this is our first error, we need to hold the latest player accountable
                 if (_errorTally == 0)
                 {
                     _errorConnection = Server.Connections.LatestConnectedID;
@@ -92,7 +92,7 @@ We detected the race ^white;'{key}'
                 {
                     Logger.LogError("Race crash detected, banning the player automatically and restarting the server.");
 
-                    //Make sure the player exists. If not than we will get hte previous player
+                    //Make sure the player exists. If not than we will get the previous player
                     Player player = Server.Connections.GetPlayer(_errorConnection);
                     if (player == null)
                     {
@@ -100,7 +100,7 @@ We detected the race ^white;'{key}'
                         player = Server.Connections.LastestPlayer;
                     }
 
-                    //Send a API log to the error
+                    //Send an API log to the error
                     Server.ApiHandler.BroadcastRoute((gateway) =>
                     {
                         if (gateway.Authentication.AuthLevel < API.AuthLevel.Admin) return null;
@@ -114,7 +114,7 @@ We detected the race ^white;'{key}'
                     if (account != null && account.IsAdmin)
                     {
                         //If the player is a admin, then we will just kick them
-                        // We will wait some time just for the kick to be applied.
+                        //We will wait some time just for the kick to be applied.
                         await Server.Kick(player, reason);
                         await Task.Delay(100);
                     }

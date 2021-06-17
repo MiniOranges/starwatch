@@ -27,7 +27,7 @@ namespace Starwatch.API.Rest
         OK = 0,
 
         /// <summary>
-        /// The request was successful, but was asyncronous and will return nothing useful.
+        /// The request was successful, but was asynchronous and will return nothing useful.
         /// </summary>
         Async = 1,
 
@@ -47,7 +47,7 @@ namespace Starwatch.API.Rest
         BadMethod = 4050,
 
         /// <summary>
-        /// The route was not found
+        /// The route was not found.
         /// </summary>
         RouteNotFound = 4040,
 
@@ -62,7 +62,7 @@ namespace Starwatch.API.Rest
         TooManyRequests = 4290,
 
         /// <summary>
-        /// An internal error has occured while processing the request.
+        /// An internal error has occurred while processing the request.
         /// </summary>
         InternalError = 5000,
         
