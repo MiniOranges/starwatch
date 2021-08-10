@@ -525,7 +525,7 @@ namespace Starwatch.Starbound
                             OnPlayerConnect?.Invoke(player);
 
                             //we should tell starwatch to restart because this only ever happens when the logs stop working
-                            await Server.Terminate("User joined without notice, dead logs.");
+                            //await Server.Terminate("User joined without notice, dead logs.");
                         }
                         catch (Exception e)
                         {
